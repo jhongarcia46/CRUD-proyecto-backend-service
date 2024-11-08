@@ -2,23 +2,23 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { moto } from "../entities/moto";
 
-const productRepository = AppDataSource.getRepository(moto);
+const motoRepository = AppDataSource.getRepository(moto);
 
-// GET - Obtener Todos los Productos
-export const getAllProducts = async(red: Request, res: Response) => {
+// GET - Obtener Todas las motos
+export const getAllmoto = async(red: Request, res: Response) => {
   try {
-    const moto = await productRepository.find();
+    const moto = await motoRepository.find();
     res.json(moto);
   } catch(error) {
     res.status(500).json({ message: "Error al obtener moto." });
   }
 };
 
-// GET by ID - Obetener Producto por ID
+// GET by PLATE - Obetener moto por placa
 export const getMotoById = async(req: Request, res: Response) => {
   try {
     const moto = await motoRepository.findOneBy({
-      id: parseInt(req.params.id),
+      id: parseInt(req.params.plate),
     });
 
     if(moto) {
@@ -34,14 +34,16 @@ export const getMotoById = async(req: Request, res: Response) => {
 // POST - Crear una nueva moto
 export const createMoto = async(req: Request, res: Response) => {
   try {
-    const { name, description, price } = req.body;
-    const product = new moto();
-    moto.name = name;
-    moto.description = description;
-    moto.price = price;
+    const { chassis, color, plate, motor, model } = req.body;
+    const moto = new moto();
+    moto.chassis = chassis;
+    moto.plate = plate;
+    moto.color = color;
+    moto.motor = motor;
+    moto.model = model;
 
     await motoRepository.save(moto);
-    res.status(201).json(product);
+    res.status(201).json(moto);
   } catch(error) {
     res.status(500).json({ message: "Error al crear moto." });
   }
@@ -50,15 +52,17 @@ export const createMoto = async(req: Request, res: Response) => {
 // PUT - Actualizar moto existente
 export const updateMoto = async(req: Request, res: Response) => {
   try {
-    const { name, description, price } = req.body;
-    const moto = await productRepository.findOneBy({
+    const { chassis, plate, color, motor, model } = req.body;
+    const moto = await motoRepository.findOneBy({
       id: parseInt(req.params.id),
     });
 
     if(moto) {
-      moto.name = name ?? moto.name;
-      moto.description = description ?? moto.description;
-      moto.price = price ?? moto.price;
+      moto.chassis = chassis ?? moto.chassis;
+      moto.plate = plate ?? moto.plate;
+      moto.color = color ?? moto.color;
+      moto.motor = motor ?? moto.motor,
+      moto.model = model ?? moto.model;
 
       await motoRepository.save(moto);
       res.json(moto);

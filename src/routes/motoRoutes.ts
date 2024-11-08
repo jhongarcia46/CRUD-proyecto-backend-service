@@ -7,12 +7,12 @@ import {
   deleteMoto,
 } from "../controllers/motoController";
 
-const productRoutes = Router();
+const motoRoutes = Router();
 
 /**
  * @swagger
  * tags:
- *   name: moto
+ *   plate: moto
  *   description: CRUD relacionado con moto
  */
 
@@ -62,9 +62,11 @@ motoRoutes.get("/:id", getMotoById);
  *           schema:
  *             type: object
  *             required:
- *               - name
- *               - description
- *               - price
+ *               - chassis
+ *               - plate
+ *               - motor
+ *               - color
+ *               - model
  *             properties:
  *               name:
  *                 type: string
@@ -78,7 +80,7 @@ motoRoutes.get("/:id", getMotoById);
  *       500:
  *         description: Error en el servidor
  */
-productRoutes.post("/", createMoto);
+motoRoutes.post("/", createMoto);
 
 /**
  * @swagger
@@ -100,7 +102,7 @@ productRoutes.post("/", createMoto);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               plate:
  *                 type: string
  *               description:
  *                 type: string
@@ -114,17 +116,17 @@ productRoutes.post("/", createMoto);
  *       500:
  *         description: Error en el servidor
  */
-productRoutes.put("/:id", updatemoto);
+motoRoutes.put("/:id", updatemoto);
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/moto/{plate}:
  *   delete:
  *     summary: Eliminar moto
  *     tags: [moto]
  *     parameters:
  *       - in: path
- *         name: id
+ *         moto: plate
  *         required: true
  *         schema:
  *           type: integer
@@ -137,6 +139,6 @@ productRoutes.put("/:id", updatemoto);
  *       500:
  *         description: Error en el servidor
  */
-productRoutes.delete("/:id", deleteMoto);
+motoRoutes.delete("/:plate", deleteMoto);
 
 export default motoRoutes;
