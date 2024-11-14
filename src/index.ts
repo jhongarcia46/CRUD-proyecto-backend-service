@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use("/api/products", motoRoutes);
+app.use("/api/moto", motoRoutes);
 
 // Documentación Swagger
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
@@ -25,7 +25,7 @@ AppDataSource.initialize()
       console.log(`Servidor corriendo en http://localhost:${PORT}\n`);
 
       console.log(`Endpoints:`);
-      console.log(`API Products http://localhost:${PORT}/api/products`);
+      console.log(`API moto http://localhost:${PORT}/api/moto`);
 
       console.log(`Documentación:`);
       console.log(`Swagger en http://localhost:${PORT}/api-docs`);

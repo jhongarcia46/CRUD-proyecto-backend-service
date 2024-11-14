@@ -5,7 +5,7 @@ import {
   createMoto,
   updatemoto,
   deleteMoto,
-} from "../controllers/motoController";
+} from "../controllers/motoControllers";
 
 const motoRoutes = Router();
 
@@ -20,7 +20,7 @@ const motoRoutes = Router();
  * @swagger
  * /api/moto:
  *   get:
- *     summary: Obtener todos las motos
+ *     summary: Obtener todas las motos
  *     tags: [moto]
  *     responses:
  *       200:
@@ -47,7 +47,7 @@ motoRoutes.get("/", getAllMoto);
  *       404:
  *         description: moto no encontrada
  */
-motoRoutes.get("/:id", getMotoById);
+motoRoutes.get("/:moto", getMotoById);
 
 /**
  * @swagger
@@ -116,7 +116,7 @@ motoRoutes.post("/", createMoto);
  *       500:
  *         description: Error en el servidor
  */
-motoRoutes.put("/:id", updatemoto);
+motoRoutes.put("/:moto", updatemoto);
 
 /**
  * @swagger

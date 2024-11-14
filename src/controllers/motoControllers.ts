@@ -10,7 +10,7 @@ export const getAllmoto = async(red: Request, res: Response) => {
     const moto = await motoRepository.find();
     res.json(moto);
   } catch(error) {
-    res.status(500).json({ message: "Error al obtener moto." });
+    res.status(500).json({ message: "Error al encontrar moto." });
   }
 };
 
@@ -27,7 +27,7 @@ export const getMotoById = async(req: Request, res: Response) => {
       res.status(404).json({ message: "moto no encontrado" });
     }
   } catch(error) {
-    res.status(500).json({ message: "Error al obtener moto." });
+    res.status(500).json({ message: "Error al encontrar moto." });
   }
 };
 

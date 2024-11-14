@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
  @Entity()
  export class product{
     @PrimaryGeneratedColumn()
-    moto!: number;
+    id!: number;
 
     @Column("text")
     chassis!: string;
