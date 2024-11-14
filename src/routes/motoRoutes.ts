@@ -3,7 +3,7 @@ import {
   getAllMoto,
   getMotoById,
   createMoto,
-  updatemoto,
+  updateMoto,
   deleteMoto,
 } from "../controllers/motoControllers";
 
@@ -12,7 +12,7 @@ const motoRoutes = Router();
 /**
  * @swagger
  * tags:
- *   plate: moto
+ *   name: moto
  *   description: CRUD relacionado con moto
  */
 
@@ -68,12 +68,16 @@ motoRoutes.get("/:moto", getMotoById);
  *               - color
  *               - model
  *             properties:
- *               name:
+ *               chassis:
  *                 type: string
- *               description:
+ *               plate:
  *                 type: string
- *               price:
- *                 type: number
+ *               motor:
+ *                 type: string
+ *               color:
+ *                 type: string
+ *               model:
+ *                 type: string
  *     responses:
  *       201:
  *         description: moto subida
@@ -102,12 +106,16 @@ motoRoutes.post("/", createMoto);
  *           schema:
  *             type: object
  *             properties:
+ *               chassis:
+ *                 type: string
  *               plate:
  *                 type: string
- *               description:
+ *               motor:
  *                 type: string
- *               price:
- *                 type: number
+ *               color:
+ *                 type: string
+ *               model:
+ *                 type: string
  *     responses:
  *       200:
  *         description: moto actualizada
@@ -116,7 +124,7 @@ motoRoutes.post("/", createMoto);
  *       500:
  *         description: Error en el servidor
  */
-motoRoutes.put("/:moto", updatemoto);
+motoRoutes.put("/:moto", updateMoto);
 
 /**
  * @swagger

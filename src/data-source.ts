@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { moto } from "./entities/moto";
+import { Moto } from "./entities/Moto";
 
 
 export const AppDataSource = new DataSource({
@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
   database: "database.sqlite",
   synchronize: true,
   logging: false,
-  entities: [moto],
+  entities: [Moto],
   migrations:[],
   subscribers:[]
 });

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
-import { moto } from "../entities/moto";
+import { Moto } from "../entities/Moto";
 
-const motoRepository = AppDataSource.getRepository(moto);
+const motoRepository = AppDataSource.getRepository(Moto);
 
 // GET - Obtener Todas las motos
-export const getAllmoto = async(red: Request, res: Response) => {
+export const getAllMoto = async(red: Request, res: Response) => {
   try {
     const moto = await motoRepository.find();
     res.json(moto);
@@ -35,7 +35,7 @@ export const getMotoById = async(req: Request, res: Response) => {
 export const createMoto = async(req: Request, res: Response) => {
   try {
     const { chassis, color, plate, motor, model } = req.body;
-    const moto = new moto();
+    const moto = new Moto();
     moto.chassis = chassis;
     moto.plate = plate;
     moto.color = color;
@@ -77,7 +77,7 @@ export const updateMoto = async(req: Request, res: Response) => {
 // DELETE - Borrar una moto
 export const deleteMoto = async(req: Request, res: Response) => {
   try {
-    const product = await motoRepository.findOneBy({
+    const moto = await motoRepository.findOneBy({
       id: parseInt(req.params.id),
     });
 

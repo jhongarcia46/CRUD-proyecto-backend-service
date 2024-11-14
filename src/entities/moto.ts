@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
  @Entity()
- export class product{
+ export class Moto {
     @PrimaryGeneratedColumn()
     id!: number;
 
