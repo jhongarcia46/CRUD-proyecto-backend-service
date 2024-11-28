@@ -34,13 +34,14 @@ export const getMotoById = async(req: Request, res: Response) => {
 // POST - Crear una nueva moto
 export const createMoto = async(req: Request, res: Response) => {
   try {
-    const { chassis, color, plate, motor, model } = req.body;
+    const { chassis, color, plate, motor, model, imgUrl } = req.body;
     const moto = new Moto();
     moto.chassis = chassis;
     moto.plate = plate;
     moto.color = color;
     moto.motor = motor;
     moto.model = model;
+    moto.imgUrl = imgUrl;
 
     await motoRepository.save(moto);
     res.status(201).json(moto);
@@ -52,7 +53,7 @@ export const createMoto = async(req: Request, res: Response) => {
 // PUT - Actualizar moto existente
 export const updateMoto = async(req: Request, res: Response) => {
   try {
-    const { chassis, plate, color, motor, model } = req.body;
+    const { chassis, plate, color, motor, model, imgUrl } = req.body;
     const moto = await motoRepository.findOneBy({
       id: parseInt(req.params.id),
     });
@@ -63,6 +64,7 @@ export const updateMoto = async(req: Request, res: Response) => {
       moto.color = color ?? moto.color;
       moto.motor = motor ?? moto.motor,
       moto.model = model ?? moto.model;
+      moto.imgUrl = imgUrl ?? moto.imgUrl;
 
       await motoRepository.save(moto);
       res.json(moto);

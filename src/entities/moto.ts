@@ -19,4 +19,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
     @Column("text")
     model!: string;
+
+    @Column("text")
+    imgUrl!: string;
  }

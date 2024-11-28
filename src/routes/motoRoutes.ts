@@ -40,12 +40,12 @@ motoRoutes.get("/", getAllMoto);
  *         required: true
  *         schema:
  *           type: integer
- *         description: placa de moto
+ *         plate: placa de moto
  *     responses:
  *       200:
- *         description: Detalles de la mot
+ *         plate: placa de la moto
  *       404:
- *         description: moto no encontrada
+ *         palte: moto no encontrada
  */
 motoRoutes.get("/:moto", getMotoById);
 
@@ -67,6 +67,7 @@ motoRoutes.get("/:moto", getMotoById);
  *               - motor
  *               - color
  *               - model
+ *               - imgUrl
  *             properties:
  *               chassis:
  *                 type: string
@@ -77,6 +78,8 @@ motoRoutes.get("/:moto", getMotoById);
  *               color:
  *                 type: string
  *               model:
+ *                 type: string
+ *               imgUrl:
  *                 type: string
  *     responses:
  *       201:
@@ -98,7 +101,7 @@ motoRoutes.post("/", createMoto);
  *         required: true
  *         schema:
  *           type: integer
- *         description: placa de moto
+ *         plate: placa de moto
  *     requestBody:
  *       required: false
  *       content:
@@ -115,6 +118,8 @@ motoRoutes.post("/", createMoto);
  *               color:
  *                 type: string
  *               model:
+ *                 type: string
+ *               imgUrl:
  *                 type: string
  *     responses:
  *       200:
