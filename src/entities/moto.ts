@@ -12,10 +12,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
     plate!: string;
 
     @Column("text")
-    color!: string;
+    motor!: string;
 
     @Column("text")
-    motor!: string;
+    color!: string;
 
     @Column("text")
     model!: string;
