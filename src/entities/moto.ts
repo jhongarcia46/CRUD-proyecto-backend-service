@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
  @Entity()
- export class product{
+ export class Moto {
     @PrimaryGeneratedColumn()
-    moto!: number;
+    id!: number;
 
     @Column("text")
     chassis!: string;
@@ -12,11 +12,14 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
     plate!: string;
 
     @Column("text")
-    color!: string;
-
-    @Column("text")
     motor!: string;
 
     @Column("text")
+    color!: string;
+
+    @Column("text")
     model!: string;
+
+    @Column("text")
+    imgUrl!: string;
  }
